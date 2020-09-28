@@ -42,7 +42,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class LoginState extends State<LoginPage> {
-
   final passwordget = TextEditingController();
   final phonenoget = TextEditingController();
 
@@ -100,15 +99,15 @@ class LoginState extends State<LoginPage> {
       height: 45.0,
       width: double.infinity,
       child: new RaisedButton(
-        color: Colors.blueAccent,
-        splashColor: Colors.red,
-        shape: StadiumBorder(side: BorderSide(color: Colors.yellowAccent)),
-        animationDuration: Duration(seconds: 2),
-        child: Text(
-          "Login",
-          style: TextStyle(color: Colors.white70),
-        ),
-        onPressed: () =>  userLogin(context)
+          color: Colors.blueAccent,
+          splashColor: Colors.red,
+          shape: StadiumBorder(side: BorderSide(color: Colors.yellowAccent)),
+          animationDuration: Duration(seconds: 2),
+          child: Text(
+            "Login",
+            style: TextStyle(color: Colors.white70),
+          ),
+          onPressed: () => userLogin(context)
 //          Navigator.of(context).push(PageRouteBuilder(
 //              opaque: false,
 //              barrierDismissible: true,
@@ -127,9 +126,7 @@ class LoginState extends State<LoginPage> {
 //              }
 //          ));
 
-
-
-      ),
+          ),
     );
   }
 
@@ -166,14 +163,13 @@ class LoginState extends State<LoginPage> {
                       enabled: true,
                       enableInteractiveSelection: true,
                       keyboardType: TextInputType.phone,
-
                       textInputAction: TextInputAction.next,
                       style: TextStyle(color: Colors.lightBlueAccent),
                       decoration: CustomTextDecoration(
                         icon: Icons.person,
                         text: "Phone_number",
                       ),
-                          controller: phonenoget,
+                      controller: phonenoget,
                       textCapitalization: TextCapitalization.none,
                       /*onFieldSubmitted: (term){
                     emailNode.unfocus();
@@ -296,16 +292,14 @@ class LoginState extends State<LoginPage> {
     );
   }
 
-  Future userLogin(BuildContext context) async{
-
+  Future userLogin(BuildContext context) async {
     String password = passwordget.text;
     String phoneno = phonenoget.text;
-
 
     var url = 'https://gpolice.000webhostapp.com/login.php';
 
     // Store all data with Param Name.
-    var data = {"password": password,"phoneno": phoneno};
+    var data = {"password": password, "phoneno": phoneno};
 
     // Starting Web API Call.
     var response = await http.post(url, body: data);
@@ -334,7 +328,6 @@ class LoginState extends State<LoginPage> {
             },
           ),
         );
-
       });
     } else {
       setState(() {
@@ -342,7 +335,4 @@ class LoginState extends State<LoginPage> {
       });
     }
   }
-
-
 }
-
